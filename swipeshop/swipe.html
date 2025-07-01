@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwipeShop</title>
+    <link rel="stylesheet" href="body.css">
+
+</head>
+<body>
+<div class="background"></div>
+<header>
+    <div class="logo">SwipeShop</div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products...">
+    </div>
+    <div class="icon" onclick="toggleCart()">🛒</div>
+</header>
+
+<div class="swipe-container" id="swipeContainer">
+    <div class="product-card" id="product1">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\IMG_5517.gif" alt="Product 1">
+        <h3>Spidy Rohit </h3>
+        <p>₹29.99</p>
+        <p>A great product that serves multiple purposes.</p>
+	<button class="view-more-btn" onclick="openImageGallery(1)">View More</button> <!-- New button -->
+    </div>
+    <div class="product-card" id="product2">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\IMG_5524 5.gif" alt="Product 2">
+        <h3>Dudeeeeee Tanisha!!!!</h3>
+        <p>₹49.99</p>
+        <p>This product is perfect for any occasion.</p>
+	<button class="view-more-btn" onclick="openImageGallery(1)">View More</button> <!-- New button -->
+    </div>
+    <div class="product-card" id="product3">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\dancing-cowboy.gif" alt="Product 3">
+        <h3>Product 3</h3>
+        <p>₹19.99</p>
+        <p>Affordable and reliable for everyday use.</p>
+	<button class="view-more-btn" onclick="openImageGallery(1)">View More</button> <!-- New button -->
+    </div>
+    <div class="product-card" id="product4">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\fashion.gif" alt="Product 4">
+        <h3>Product 4</h3>
+        <p>₹39.99</p>
+        <p>A must-have item in your collection.</p>
+    </div>
+    <div class="product-card" id="product5">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\fashion-excited.gif" alt="Product 5">
+        <h3>Product 5</h3>
+        <p>₹59.99</p>
+        <p>Experience the quality and craftsmanship.</p>
+    </div>
+    <div class="product-card" id="product6">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\fashion-lfw.gif" alt="Product 6">
+        <h3>Product 6</h3>
+        <p>₹59.99</p>
+        <p>Experience the quality and craftsmanship.</p>
+    </div>
+    <div class="product-card" id="product7">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\good-morning-i-love-you.gif" alt="Product 7">
+        <h3>Product 7</h3>
+        <p>₹59.99</p>
+        <p>Experience the quality and craftsmanship.</p>
+    </div>
+   <div class="product-card" id="product8">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\lfw-lakme.gif" alt="Product 8">
+        <h3>Product 8</h3>
+        <p>₹59.99</p>
+        <p>Experience the quality and craftsmanship.</p>
+    </div>
+   <div class="product-card" id="product9">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\ppop-g22-ppop.gif" alt="Product 9">
+        <h3>Product 9</h3>
+        <p>₹59.99</p>
+        <p>Experience the quality and craftsmanship.</p>
+    </div>
+   <div class="product-card" id="product10+
+">
+        <img src="C:\Users\Vidhan\OneDrive\Desktop\fsl\xolo-mariduena-robert-pattinson.gif" alt="Product 10">
+        <h3>Product 10</h3>
+        <p>₹59.99</p>
+        <p>Experience the quality and craftsmanship.</p>
+    </div>
+</div>
+<div class="image-gallery-popup" id="imageGalleryPopup">
+    <div class="image-gallery-container">
+        <button class="close-btn" onclick="closeImageGallery()">Close</button>
+        <div id="imageGallery" class="gallery-images">
+            <!-- Product images will be dynamically inserted here -->
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="sizeSelectPopup">
+    <h2>Select Size</h2>
+    <div id="productDescription" class="description"></div>
+    <div class="size-display" id="selectedSizeDisplay"></div>
+    <select id="sizeSelect" class="size-select" onchange="updateSelectedSize()">
+        <option value="">Select Size</option>
+        <option value="S">Small</option>
+        <option value="M">Medium</option>
+        <option value="L">Large</option>
+        <option value="XL">Extra Large</option>
+    </select>
+    <button class="confirm-btn" onclick="confirmSize()">Confirm Size</button>
+    <button class="close-btn" onclick="closeSizeSelectPopup()">Close</button>
+    <button class="close-btn" onclick="showSizeChart()">Show Size Chart</button>
+</div>
+
+<div class="size-chart-popup" id="sizeChartPopup">
+    <h2>Size Chart</h2>
+    <table class="size-chart">
+        <tr>
+            <th>Size</th>
+            <th>Chest (inches)</th>
+            <th>Waist (inches)</th>
+            <th>Hip (inches)</th>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td>34-36</td>
+            <td>28-30</td>
+            <td>34-36</td>
+        </tr>
+        <tr>
+            <td>M</td>
+            <td>38-40</td>
+            <td>32-34</td>
+            <td>38-40</td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>42-44</td>
+            <td>36-38</td>
+            <td>42-44</td>
+        </tr>
+        <tr>
+            <td>XL</td>
+            <td>46-48</td>
+            <td>40-42</td>
+            <td>46-48</td>
+        </tr>
+    </table>
+    <button class="close-btn" onclick="closeSizeChart()">Close Size Chart</button>
+</div>
+
+<div class="cart" id="cart">
+    <h3>Cart</h3>
+    <div id="cartItems"></div>
+</div>
+
+<div class="cart-popup" id="cartPopup">
+    <h2>Added to Cart</h2>
+    <p id="cartProductName"></p>
+    <button class="close-btn" onclick="closeCartPopup()">Close</button>
+</div>
+
+<div class="payment-popup" id="paymentPopup">
+    <h2>Proceed to Payment</h2>
+    <p id="paymentProductName"></p>
+    <button class="close-btn" onclick="closePaymentPopup()">Close</button>
+    <button class="confirm-btn" onclick="completePayment()">Pay Now</button>
+</div>
+
+<div class="floating-text" id="floatingText"></div>
+
+<script>
+    let currentIndex = 0;
+    const products = document.querySelectorAll('.product-card');
+    const floatingText = document.getElementById('floatingText');
+    const productDescription = document.getElementById('productDescription');
+    const selectedSizeDisplay = document.getElementById('selectedSizeDisplay');
+    const cart = document.getElementById('cart');
+    const cartItems = document.getElementById('cartItems');
+    const cartPopup = document.getElementById('cartPopup');
+    const cartProductName = document.getElementById('cartProductName');
+    const paymentPopup = document.getElementById('paymentPopup');
+    const paymentProductName = document.getElementById('paymentProductName');
+
+    let selectedSize = '';
+
+    function showFloatingText(message) {
+        floatingText.innerText = message;
+        floatingText.style.display = 'block';
+        floatingText.style.opacity = '1';
+
+        setTimeout(() => {
+            floatingText.style.opacity = '0';
+            setTimeout(() => {
+                floatingText.style.display = 'none';
+            }, 500);
+        }, 2000);
+    }
+
+    function swipe(action) {
+        const productCard = products[currentIndex];
+        if (action === 'like') {
+            productCard.style.transform = 'translateX(100%)';
+            showFloatingText('You will get more products like this!');
+        } else if (action === 'pass') {
+            productCard.style.transform = 'translateX(-100%)';
+            showFloatingText('Product disliked.');
+        } else if (action === 'addToCart') {
+            openSizeSelectPopup();
+        } else if (action === 'buy') {
+            openSizeSelectPopup(true);
+        }
+
+        setTimeout(() => {
+            productCard.style.opacity = '0';
+            currentIndex++;
+            if (currentIndex < products.length) {
+                products[currentIndex].style.opacity = '1';
+                products[currentIndex].style.transform = 'translateY(0)';
+            } else {
+                alert('No more products!');
+            }
+        }, 300);
+    }
+
+    function openSizeSelectPopup(isBuying = false) {
+        const productCard = products[currentIndex];
+        productDescription.innerText = productCard.querySelector('p').innerText; // Show product description
+        selectedSizeDisplay.innerText = ''; // Clear the displayed size
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('sizeSelectPopup').style.display = 'block';
+        document.getElementById('sizeSelectPopup').dataset.isBuying = isBuying; // Store whether it's a buy action
+    }
+
+    function closeSizeSelectPopup() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('sizeSelectPopup').style.display = 'none';
+    }
+
+    function showSizeChart() {
+        document.getElementById('sizeChartPopup').style.display = 'block';
+    }
+
+    function closeSizeChart() {
+        document.getElementById('sizeChartPopup').style.display = 'none';
+    }
+
+    function confirmSize() {
+        const isBuying = document.getElementById('sizeSelectPopup').dataset.isBuying === 'true';
+        if (selectedSize) {
+            if (isBuying) {
+                proceedToPayment();
+            } else {
+                addToCart();
+            }
+        } else {
+            alert('Please select a size before proceeding!');
+        }
+    }
+
+    function updateSelectedSize() {
+        selectedSize = document.getElementById('sizeSelect').value;
+        selectedSizeDisplay.innerText = selectedSize ? `Selected Size: ₹{selectedSize}` : '';
+    }
+
+    function addToCart() {
+        const productCard = products[currentIndex];
+        const productName = productCard.querySelector('h3').innerText;
+        const productPrice = productCard.querySelector('p').innerText;
+
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerText = `₹{productName} - ₹{productPrice} (Size: ₹{selectedSize})`;
+        cartItems.appendChild(cartItem);
+
+        cart.style.display = 'block';
+        cartProductName.innerText = productName;
+        closeSizeSelectPopup();
+        openCartPopup();
+    }
+
+    function proceedToPayment() {
+        const productCard = products[currentIndex];
+        const productName = productCard.querySelector('h3').innerText;
+        paymentProductName.innerText = `You are purchasing: ₹{productName} (Size: ₹{selectedSize})`;
+        closeSizeSelectPopup();
+        openPaymentPopup();
+    }
+
+    function toggleCart() {
+        cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
+    }
+
+    function openCartPopup() {
+        document.getElementById('overlay').style.display = 'block';
+        cartPopup.style.display = 'block';
+    }
+
+    function closeCartPopup() {
+        document.getElementById('overlay').style.display = 'none';
+        cartPopup.style.display = 'none';
+    }
+
+    function openPaymentPopup() {
+        document.getElementById('overlay').style.display = 'block';
+        paymentPopup.style.display = 'block';
+    }
+
+    function closePaymentPopup() {
+        document.getElementById('overlay').style.display = 'none';
+        paymentPopup.style.display = 'none';
+    }
+
+    function completePayment() {
+        alert('Payment completed! Thank you for your purchase.');
+        closePaymentPopup();
+    }
+
+    // Event listeners for keyboard and mouse swipe actions
+    document.addEventListener('keydown', (e) => {
+        if (currentIndex < products.length) {
+            switch (e.key) {
+                case 'ArrowRight':
+                    swipe('like');
+                    break;
+                case 'ArrowLeft':
+                    swipe('pass');
+                    break;
+                case 'ArrowUp':
+                    swipe('addToCart');
+                    break;
+                case 'ArrowDown':
+                    swipe('buy');
+                    break;
+            }
+        }
+    });
+
+    // Mouse swipe functionality
+    let startX, startY, endX, endY;
+    const swipeThreshold = 50; // Minimum distance to consider a swipe
+
+    const swipeContainer = document.getElementById('swipeContainer');
+
+    swipeContainer.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    swipeContainer.addEventListener('mouseup', (e) => {
+        endX = e.clientX;
+        endY = e.clientY;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const diffX = endX - startX;
+        const diffY = endY - startY;
+
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX > swipeThreshold) {
+                swipe('like');
+            } else if (diffX < -swipeThreshold) {
+                swipe('pass');
+            }
+        } else {
+            if (diffY > swipeThreshold) {
+                swipe('addToCart');
+            } else if (diffY < -swipeThreshold) {
+                swipe('buy');
+            }
+        }
+    }
+
+    // Initialize the product cards
+    products.forEach((card, index) => {
+        if (index > 0) {
+            card.style.opacity = '0';
+        }
+    });
+</script>
+<script> src="serverrr.js"></script>
+</body>
+</html>
